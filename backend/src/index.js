@@ -7,6 +7,7 @@ import authRoutes from "./routes/auth.Route.js"
 import songRoutes from "./routes/song.Route.js"
 import albumRoutes from "./routes/album.Route.js";
 import statRoutes from "./routes/stat.Route.js";
+import { connectDB } from "./lib/db.js";
 
 
 
@@ -24,4 +25,5 @@ app.use("/api/stats", statRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);
+    connectDB();
 });
