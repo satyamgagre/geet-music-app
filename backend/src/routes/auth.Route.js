@@ -8,6 +8,14 @@ router.post("/callback",  async(req, res) => {
         const { id, firstName, lastName, imageUrl } = req.body;
 
         const user = await User.findOne({clerkId: id});
+
+        if(!user){
+            await User.create({
+                clerkId: id,
+                fullName: `${firstName} ${lastName}`,
+                imageUrl
+            })
+        }
     } catch (error) {
         
     }
